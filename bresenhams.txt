@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int p,dx,dy,i,x,y,x1,x2,y1,y2,maxsteps;
+float xinc,yinc;
+int gd = DETECT,gm;
+initgraph(&gd,&gm,"C:\TC\BGI");
+clrscr();
+printf("\n\nEnter the co-ordinates of first point :");
+scanf("%d %d",&x1,&x2);
+printf("\n\nEnter the co-ordinates of second point:");
+scanf("%d %d",&x2,&y2);
+dx = x2-x1;
+dy= y2-y1;
+p = 2*dy - dx;
+x = x1;
+y = y1;
+putpixel(x,y,WHITE);
+if(abs(dx) > abs(dy))
+ maxsteps = abs(dx);
+else
+ maxsteps = abs(dy);
+
+for(i=0;i<=maxsteps;i++)
+{
+  putpixel(x,y,WHITE);
+  if(p < 0)
+  {
+   p = p + (2 * dy);
+   x = x+1;
+   y = y;
+  }
+  else
+  {
+   x= x+1;
+   y= y+1;
+   p = p + 2 * (dy - dx);
+  }
+
+
+ getch();
+ closegraph();
+}
+}
